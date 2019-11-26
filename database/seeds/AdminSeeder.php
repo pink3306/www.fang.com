@@ -12,8 +12,8 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-//        // 调用factory 数据工厂 生成数据
-//        factory(Admin::class,10)->create();
+        // 调用factory 数据工厂 生成数据
+        factory(Admin::class,10)->create();
 
 //        // 清空数据 truncate
 //        Admin::truncate();

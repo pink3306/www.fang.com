@@ -12,6 +12,8 @@ class Kernel extends HttpKernel
      * These middleware are run during every request to your application.
      *
      * @var array
+     *
+     * 全局中间件定义
      */
     protected $middleware = [
         \App\Http\Middleware\CheckForMaintenanceMode::class,
@@ -19,6 +21,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+
+        // 后台用户是否登陆检查
+//        \App\Http\Middleware\CheckAdmin::class,
     ];
 
     /**
@@ -49,6 +54,8 @@ class Kernel extends HttpKernel
      * These middleware may be assigned to groups or used individually.
      *
      * @var array
+     *
+     * 路由中间件 定义数组
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
@@ -60,6 +67,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        // 路由中间件的别名 => 类路径
+        'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
+
     ];
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
+
     // 后台登陆显示
     public function index(){
         return view('admin/login/login');
@@ -30,11 +31,14 @@ class LoginController extends Controller
 ////        dump(auth()->user());
 ///
         if(!$bool){
+            // 用户没有登陆成功，返回登陆页面 并利用闪存给用户提示
             return redirect(route('admin.login'))->withErrors(['error'=>'账户或密码不正确']);
         }
-
+        //登陆成功后 跳到后台首页
         return redirect(route('admin.home'));
 
 
     }
+
+
 }

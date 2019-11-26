@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
-<link href="lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="{{staticAdminWeb()}}static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="{{staticAdminWeb()}}static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="{{staticAdminWeb()}}static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="{{staticAdminWeb()}}lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
 
 <title>fang后台登录</title>
 </head>
@@ -19,12 +19,11 @@
 <div class="header"></div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-<!--      显示表单验证错误信息-->
-      @if($errors->any())
-        @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-        @endforeach
-      @endif
+{{--表单验证提示 blade模板包含。把公用的html提取到外部方便日后使用--}}
+
+    @include('admin.public.msg')
+
+
     <form class="form form-horizontal" action="{{route('admin.login')}}" method="post">
         @csrf
       <div class="row cl">
